@@ -1,0 +1,16 @@
+version: '2.3'
+
+services:
+  myipaddr:
+    image: php:7-apache
+    volumes:
+      - ./index.php:/var/www/html/index.php:ro
+    ports:
+      - "80:80/tcp"
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: 20m
+        max-file: "30"
+    privileged: true
